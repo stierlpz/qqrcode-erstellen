@@ -9,7 +9,7 @@ Original file is located at
 # Setup
 """
 
-import os
+import os #Erstellen Ornder
 
 if not os.path.exists('out/images/png'):
     os.makedirs('out/images/png')
@@ -35,11 +35,17 @@ if not os.path.exists('out/text/txt'):
 if not os.path.exists('out/text/pdf'):
     os.makedirs('out/text/pdf')
 
-pip install pillow
+pip install pillow #Erstellen Bildverarbeitung
 
-pip install qrcode
+pip install qrcode #Erstellen QR-Code
 
-import qrcode
+import qrcode #Import QR-Code
+
+pip install gTTS #Erstellen Text too Spech (Audio)
+
+from gtts import gTTS #Import Text too Spech (Audio)
+import os
+from io import BytesIO
 
 """#QR-Code erstellen
 Die fertigen Codes liegen im Ordner 'out/images'.
@@ -78,13 +84,7 @@ print('-------------------------------------------------------------')
 """
 
 # Audio
-Die fertigen Audios liegen im Ordner 'out/audio'"""
-
-pip install gTTS
-
-from gtts import gTTS 
-import os
-from io import BytesIO
+Die fertigen Audios liegen im Ordner 'out/audio'."""
 
 language='de'
 
@@ -105,5 +105,14 @@ print('out/audio/wav/'+dn+'_qr.wav')
 print('out/audio/ogg/'+dn+'_qr.ogg')
 print('-------------------------------------------------------------')
 
-"""# Text   *noch leer!  txt und pdf*"""
+"""# Text   *noch leer!  txt und pdf*
+Die fertigen Texte liegen im Ordner 'out/text'.
+"""
 
+file = open('out/text/txt/'+dn+'.txt','w+')
+file.write('Inhalt des QR-Code: '+text)
+file.close()
+print('-------------------------------------------------------------')
+print('Text gespeichert als: ')
+print('out/text/txt/'+dn+'_qr.txt')
+print('-------------------------------------------------------------')
