@@ -30,7 +30,10 @@ if not os.path.exists('out/audio/ogg'):
     os.makedirs('out/audio/ogg')    
 
 if not os.path.exists('out/text/txt'):
-    os.makedirs('out/text/txt')
+    os.makedirs('out/text/txt')    
+
+if not os.path.exists('out/text/pdf'):
+    os.makedirs('out/text/pdf')
 
 pip install pillow
 
@@ -102,5 +105,5 @@ print('out/audio/wav/'+dn+'_qr.wav')
 print('out/audio/ogg/'+dn+'_qr.ogg')
 print('-------------------------------------------------------------')
 
-"""# Text   *noch leer!*"""
+"""# Text   *noch leer!  txt und pdf*"""
 
