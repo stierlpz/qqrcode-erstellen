@@ -32,6 +32,9 @@ if not os.path.exists('out/audio/ogg'):
 if not os.path.exists('out/text/txt'):
     os.makedirs('out/text/txt')    
 
+if not os.path.exists('out/text/odt'):
+    os.makedirs('out/text/odt')        
+
 if not os.path.exists('out/text/pdf'):
     os.makedirs('out/text/pdf')
 
@@ -47,7 +50,12 @@ from gtts import gTTS #Import Text too Spech (Audio)
 import os
 from io import BytesIO
 
+pip install fpdf #Erstellen PDF
+
+from fpdf import FPDF #Import PDF
+
 """#QR-Code erstellen
+
 Die fertigen Codes liegen im Ordner 'out/images'.
 """
 
@@ -62,8 +70,8 @@ print(text,'wird als ',dn,'_qr gespeichert.')
 print('-------------------------------------------------------------')
 
 qr = qrcode.QRCode(
-        version=10,
-        box_size=2,
+        version=5,
+        box_size=5,
         border=5)
 qr.add_data(input_data)
 qr.make(fit=True)
@@ -105,14 +113,31 @@ print('out/audio/wav/'+dn+'_qr.wav')
 print('out/audio/ogg/'+dn+'_qr.ogg')
 print('-------------------------------------------------------------')
 
-"""# Text   *noch leer!  txt und pdf*
+"""# Text
 Die fertigen Texte liegen im Ordner 'out/text'.
 """
 
 file = open('out/text/txt/'+dn+'.txt','w+')
 file.write('Inhalt des QR-Code: '+text)
 file.close()
+
+file = open('out/text/odt/'+dn+'.odt','w+')
+file.write('Inhalt des QR-Code: '+text)
+file.close()
+pdf = FPDF()
+pdf.add_page()
+pdf.set_font("Arial", size = 15)
+pdf.cell(200, 10, txt = 'Inhalt des Qr-Codes '+dn+':', 
+         ln = 1, align = 'C')
+pdf.cell(200, 10, txt = text,
+         ln = 2, align = 'C')
+pdf.output('out/text/pdf/'+dn+'_qr.pdf')
+
 print('-------------------------------------------------------------')
 print('Text gespeichert als: ')
 print('out/text/txt/'+dn+'_qr.txt')
+print('out/text/odt/'+dn+'_qr.odt')
+print('-------------------------------------------------------------')
+print('PDF gespeichert als: ')
+print('out/text/pdf/'+dn+'_qr.pdf')
 print('-------------------------------------------------------------')
