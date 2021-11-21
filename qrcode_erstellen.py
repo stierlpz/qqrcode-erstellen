@@ -38,19 +38,19 @@ if not os.path.exists('out/text/odt'):
 if not os.path.exists('out/text/pdf'):
     os.makedirs('out/text/pdf')
 
-pip install pillow #Erstellen Bildverarbeitung
+##pip install pillow #Erstellen Bildverarbeitung
 
-pip install qrcode #Erstellen QR-Code
+#pip install qrcode #Erstellen QR-Code
 
 import qrcode #Import QR-Code
 
-pip install gTTS #Erstellen Text too Spech (Audio)
+#pip install gTTS #Erstellen Text too Spech (Audio)
 
 from gtts import gTTS #Import Text too Spech (Audio)
 import os
 from io import BytesIO
 
-pip install fpdf #Erstellen PDF
+#pip install fpdf #Erstellen PDF
 
 from fpdf import FPDF #Import PDF
 
@@ -71,8 +71,8 @@ print('-------------------------------------------------------------')
 
 qr = qrcode.QRCode(
         version=5,
-        box_size=5,
-        border=5)
+        box_size=10,
+        border=10)
 qr.add_data(input_data)
 qr.make(fit=True)
 
@@ -117,17 +117,17 @@ print('-------------------------------------------------------------')
 Die fertigen Texte liegen im Ordner 'out/text'.
 """
 
-file = open('out/text/txt/'+dn+'.txt','w+')
-file.write('Inhalt des QR-Code: '+text)
+file = open('out/text/txt/'+dn+'_qr.txt','w+')
+file.write('Inhalt des QR-Code '+dn+': ' +text)
 file.close()
 
-file = open('out/text/odt/'+dn+'.odt','w+')
-file.write('Inhalt des QR-Code: '+text)
+file = open('out/text/odt/'+dn+'_qr.odt','w+')
+file.write('Inhalt des QR-Code '+dn+': '+text)
 file.close()
 pdf = FPDF()
 pdf.add_page()
 pdf.set_font("Arial", size = 15)
-pdf.cell(200, 10, txt = 'Inhalt des Qr-Codes '+dn+':', 
+pdf.cell(200, 10, txt = 'Inhalt des Qr-Codes '+dn+' :', 
          ln = 1, align = 'C')
 pdf.cell(200, 10, txt = text,
          ln = 2, align = 'C')
