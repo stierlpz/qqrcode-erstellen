@@ -38,7 +38,7 @@ if not os.path.exists('out/text/odt'):
 if not os.path.exists('out/text/pdf'):
     os.makedirs('out/text/pdf')
 
-##pip install pillow #Erstellen Bildverarbeitung
+#pip install pillow #Erstellen Bildverarbeitung
 
 #pip install qrcode #Erstellen QR-Code
 
@@ -141,3 +141,11 @@ print('-------------------------------------------------------------')
 print('PDF gespeichert als: ')
 print('out/text/pdf/'+dn+'_qr.pdf')
 print('-------------------------------------------------------------')
+
+"""# Codeleser öffnen
+  https://www.onlinebarcodereader.com/de.html
+"""
+
+import webbrowser
+url='https://www.onlinebarcodereader.com/de.html'
+webbrowser.open(url)
